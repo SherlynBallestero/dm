@@ -1,0 +1,60 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows}
+
+\title{Notas de conferencias}
+\author{Sherlyn Ballestero Cruz \\ Maria de Lourdes Choy Ferna\'ndez}
+
+\begin{document}
+\maketitle
+\newpage
+\pagestyle{myheadings}
+\markright{Introdicci\'on a la Teor\'ia de lenguajes y Aut\'omatas}
+\textit{Conferencia3}\\
+\section{¿Qu\'e es un aut\'omata finito no determinista NFA?\\}  
+\textbf{Vista informal de un NFA}\\
+-finito conjunto de estados\\
+-finito conjunto de s\'imbolos\\
+-estado inicial\\
+-conjunto de estados aceptados\\
+-funci\'on de transicci\'on  \footnote{A diferencia de los DFA en  los NFA en la funci\'on de transicci\'on toman como entrada un estado y un s\'imbolo pero retornan un conjunto de estados }\\
+
+\textbf{Ejemplo 1:}\\
+\begin{tikzpicture}
+\node[state, initial] (q0) {$q_0$};
+\node[state, right of=q0,xshift=1cm] (q1) {$q_1$};
+\node[state,,accepting, right of=q1,xshift=1cm] (q2) {$q_2$};
+\draw (q0) edge[loop above] node{1,0} (q0)
+(q0) edge[above,->] node{0} (q1)
+(q1) edge[above,->] node{1}(q2)
+\end{tikzpicture}
+\\ En el ejemplo se muestra el NFA que acepta aquellas cadenas que terminan en 01.Veamos que sucede cuando se procesa la cadena 00101.\\
+Primero se encuentra en el estado inicial $q_{0}$, cuando se lee el 0, el conjunto de estados al que el aut\'omata pasar\'a ser\'an \{q_{0},q_{1}\}, ahora se pasa estado por estado del conjunto en el que nos encontramos y vemos por cada uno que sucede al entrar el siguiente s\'imbolo, que es 0, al estar en $q_0$ se alcanzan $q_{0}$ y $q_{1}$ y desde $q_{1}$ lo que ocurre es llamado atasco, desde ahi ya no se llega a mas estados por lo que el conjunto en el que nos encontramos ahora ser\'a nuevamente $\{q_{0},q_{1}\}$.\\ Luego viene un 1, desde $q_{0}$ se alcanza $q_{0}$ y desde $q_{1}$ se llega hasta $q_{2}$, ahora nos encontramos parado sobre el conjunto $\{q_{0},q_{2}\}$.\\ El pr\'oximo a analizar es 0, desde $q_{0}$ nuevamente se llega hasta $\{q_{0},q_{1}\}$ y desde $q_{2}$ no se puede llegar a ning\'un lado, luego viene un uno y  como se vi\'o anteriormente se llega a 
+$\{q_{0},q_{2}\}$, ahora ya no quedan transicci\'ones por analizar, como $q_{2}$ que pertenece al conjunto de estados aceptados tambi\'en se encuentra entre los estados finales de esta cadena entonces diremos que la cadena 00101 es aceptada por el auto\'omata, resultado esperado pues la cadena termina en 01.\\
+\textbf{Vista formal de un NFA}\\
+Formalmente, es una tupla $A = < V,Q,q_0,F,f >$ donde:\\
+- $V$ es un alfabeto de entrada,\\
+- $Q$ es un conjunto finito de estados,\\
+- $q_0 \in Q$ es un estado especial "inicial",\\
+- $F$ es un subconjunto de estados "finales",\\
+- $f$ es una función de transición, se le da como entrada $q_{i}\in Q$ y $w\in V$ y retorna un conjunto de estados de $Q$.\\
+Formalizando el Ejemplo 1 quedar\'ia:\\
+$(\{q_{0},q_{1},q_{2}\}, \{0,1\},f,q_{0},\{q_{2}\})$\\
+\section{Lenguaje de un NFA}\\
+Sea $A = < V,Q,q_0,F,f >$ un NFA entonces $L(A)=\{w|f(q_{0},w)\cap F \neq \emptyset \}$.
+\\$L(A)$ es un conjunto de cadenas sobre el alfabeto $V^{*}$ tal que la funci\'on de transicci\'on extendida\footnote{funci\'on de transicci\'on extendida: Toma un estado inicial y una cadena y retorna los estados en los que se encuentra el NFA si procesa toda la cadena.} desde $q_{0}$ y con w contiene al menos una entrada de las aceptadas por el aut\'omata. 
+\section{$DFA \leftrightarrow NFA$}\\
+
+Cada lenguaje que puede ser descrito por un NFA tam,bi\'en puede ser descrito por un DFA.\\En la pr\'actica DFA tiene tantos estados como el NFA corresponfiente, en el peor caso tendr\'a $2^{n}$ estados mientras el NFA tenga n.\\
+\section{$Epsil\'on- transicci\'on$}\\
+Se permiten transicciones con el string vacio, un NFA puede hacerlas espontaneamente sin recibir alg\'un s\'imbolo de entrada especifico.\\
+
+
+
+
+\end{document}
