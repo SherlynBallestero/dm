@@ -1,0 +1,122 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows}
+
+\title{ClasePractica1}
+\author{Sherlyn Ballestero Cruz }
+
+\begin{document}
+
+\maketitle
+\newpage
+\textbf{1. Dq el conjunto de todos los n\'umeros primos es infinto.}
+\\Supongamos que el conjunto $P=\{p_{1},p_{2},...,p_{n}\}$ que contiene  todos los n\'umeros primos es finito.\\
+Se conoce que todo \'umero tiene al menso un divisor ptimo, por teor\'ia de n\'umeros.
+\\Sea el n\'umero $p_{1}p_{2}...p_{n}+1$, el resto de dividir este n\'umero por cualquiera de los n primos comprendidos en P es 1,por tanto existe un primo no contenido en P que divide a este n\'umero. Contradicci\'on!!!!
+\\\textbf{2. Dq un n\'umero es divisible por 3 si y solo si la suma de sus d\'igitos es divisible por 3.}
+ Tengamos en cuenta que:\\
+ $10\equiv 1(3)$\\
+ $10^{i}\equiv 1(3)$\\
+ $a^{i}\equiv 1(3)$\\
+ $10^{i}a^{i}\equiv a^{i}(3)$\\
+Dado que todo n\'umero se puede escribir como:
+$d_{n}10^{n}...d_{1}=\sum_{i=0}^{n}d_{i}10^{i}$ y que
+$\sum_{i=0}^{n}d_{i}10^{i} \equiv \sum_{i=0}^{n}d_{i} (3)$
+por el analisis inicial, queda demostrado que todo n\'umero deja resto con tres lo mismo que deja la suma de sus d\'igitos.
+
+\\\textbf{3. Sea $S$ un conjunto finito de enteros positivos. Asumiendo que hay exactamente 2023 pares ordenados $(x,y)$ en $S\times S$ tal que el producto $xy$ es un cuadrado perfecto. Pruebe que es posible encontrar al menos 4 elementos distintos en $S$ tales que ninguno de sus productos dos a dos sea un cuadrado perfecto.}\\
+Sea $P$ el conjunto de los pares $<x,y>$ tal que $xy=a^{2}$ para alg\'un a y $x,y \in S$
+\\Tengamos en cuenta que:\\
+ $<x,x> \in P, \forall x \in S $pues $xx=x^{2} \Rightarrow P $ es reflexivo.
+ Notese tambi\'en que $<x,y> \in P$ si $xy=a^{2}$ y $xy=yx=a^{2}$ $\Rightarrow <y,x> \in P $. Por tanto se cumple la simetr\'ia.\\
+Adem\'as Si $<x,y \in P$ y $<x,z \in P \Rightarrow$\\
+$xy=a^{2}$\\
+$xz=b^{2}$\\
+$xy^{2}z=a^{2}b^{2}$\\
+$xy^{2}z=a^{2}b^{2}$\\
+$xz=\frac{a^{2}b^{2}}{y^{2}}$\\
+Luego $<x,y> \in P$ por tanto se cumple la transitividad.\\
+Nos encontramos ante una relaci\'on de equivalencia.Luego si establecemos $A/R$ se puede observar que: en cada clase de equivalencia encontraremos los elementos que estaran rlacionados unos conotro en la relaci\'on y si tomo dos elementos de clases distintas cuando los multiplique no habr\'a manera que este de $a^{2}$ para alg\'un a, de pasar esto entonces el par perteneciese a la misma clase. Basta probar que se deben formar al menso cuatro clases de equivalencia.\\
+Demostremos que en $S/R$ tiene al menos 4 clases de equivalencia.\\
+Observemos que como $|P|=2023$ y que dado cada clase de equivalencia con x cantidad de elementos, como todos estan relacionados con todos esos x elementos representan $x^{2}$ de los 2023 pares, si solo hubiese una clase de equivalencia, pudiesemos observar una clara contradicci\'on dada por que 2023 no es un cuadrado.\\
+Suponiendo que hay dos clases de equivalencias entonces se podr\'ia decir que: $i^{2}+j^{2}=2023$, siendo i y j las cardinalidades de ambas clases. Pero si analizamos la congruencia con 4 de los cuadrados , se obtiene que estos dejan resto 1 o 0 y que 2023 deja resto 3 los que nos muestra que es imposible obtener 2023 a opartir de sumar dos cuadrados.\\
+Supongamos que existen tres clases de equivalencia, aqui veremos la contradicci\'on a partir de los restos que dejan con 8 dichos cuadrados, 2023 deja resto 7, y los cuadrados dejan resto, 1,4 o 0 , no existe manera con estos  tres n\'umerosa obtener la suma de 7 por lo que es imposible que hayan exactamente 3 clases de equivalencia.\\
+Veamos que existe al menos una combinaci\'on de 4 cuadrados que me dar\'an como resulktado 2023, los que fueron posible encontrar despu\'es de una exaustiva busquedad: $42^[2]+15^{2}+5^{2}+3^{2}=2023 $.
+\\
+\textbf{4. Dq de un conjunto de premisas l\'ogicas donde existe una contradicci\'on se puede deducir cualquier proposici\'on.}
+$T\vdas A  \curlywedge   \rightharpoondown A$\\
+$T\vdash 0$\\
+$T\vdash 0 \curlyvee q$\\
+$T\vdash1\Rightarrow q$\\
+$T\vdash q$\\  
+
+
+
+\\\textbf{5. Dq, dado que $M$ contiene a todos los conjuntos que no se contienen a si mismos, $M$ no es un conjunto.}\\
+ Sea $M$ el conjunto que contiene a todos los conjuntos que no se contienen a si mismos.\\
+ Si M no se contiene a si mismo \Rightarrow $M \in M$ (Contradicci\'on)
+ Si M se contiene \Rightarrow por la definici\'on de M se cumple que $M \in M$ (Contradicci\'on)
+ Luego por reducci\'on al absurdo se puede concluir con que M no es un conjunto.\\
+ 
+
+\\\textbf{6. Dq, dado un grafo $G$, si existe un camino de $u$ a $v$ entonces existe un camino simple de $u$ a $v$.}
+Sea $C$ el conjunto que contiene las distancias de los caminos de u a v.\\
+Existe camino de u a v por datos.\\
+Luego C no est\'a vacio y las distancias representan son enteros no negativos,por ley del buen ordenamiento existe elemento minimo m.\\
+Sea $u,....v$ un camino de longitud m de u a v en el grafo. Sup[ongamos que existe un ciclo, si eliminamos los elementos del ciclo aun podremos llegar de u a v y este nuevo camino tiene longitud inferior a m (contradicci\'on). \\ Se puede deducir que existe camino simple de u a v.
+ 
+
+\\\textbf{7. Se quiere dar un vuelto de una cantidad de dinero $x, x > 8$. Dq es posible realizarlo usando s\'lo denominaciones de billetes de $3$ y $5$ pesos.}
+Demostremos por inducci\'on.\\
+Caso Base:
+$x=9=3y+5z$\\
+$y=3 y z=0$\\
+Supongamos que se cumple para x=n\\
+Para $z\neq 0$:\\
+$n=3y+5Z$
+$n+1=3y + 5z +1$\\
+de donde:\\
+$5z-2=3+5(z-1)$\\
+luego: como 0=2-2\\
+$n+1=3y + 5z +1 + 0$\\
+$n+1=3y + 5z +1 +2-2$\\
+$n+1=3y + (5z-2) +1 +2$\\
+$n+1=3y + 3+5(z-1) +3$\\
+$n+1=3(y+2)+5(z-1)$\\
+$\Rightarrow$ Se cumple para todo n.
+\\ Veamos para z=0\\
+$n=3j, n>= 8,j>=3 $\\
+$n+1=5*2+3(j-3)$\\
+$\Rightarrow$ Se cumple para todo n.
+
+\\\textbf{8. Dq, dado un grafo $G$, y un camino $P$ de $a$ a $b$ y un camino $Q$ de $a$ a $b$, con $P \neq Q$, entonces existe un ciclo en $G$.}
+Demostremos por Inducci\'on.\\
+Caso Base:Para tres nodos se cumple, verificable\\
+Supongamos que se cumple $\forall m, 3=<m<n$\\
+Supongamos que hay una arista com\'un para ambos caminos, si retiramos dicha arista entonces caemos en uno de los casos hip\'otesis.\\
+Si la arista no es com\'un entonces, sean los caminos: $a,p_{1}...b$ y $a,p_{2}...b$, como existe camino de $p_{1} a a$ por teorema demosttrado anteriormente se tiene que existe camino simple, y con la arista $<a,p_{1}>$ se completa el ciclo.\\
+\textbf{Ejercicios de razonamiento l\'ogico}\\
+\textbf{3. Demuestre que el algoritmo de ordenaci\'on por m\'inimos sucesivos siempre produce un array ordenado.}\\
+Supongamos que luego de aplicar el algoritmo a determinado array este no queda ordenado, donde dados dos elementos $a_{k} > a_{k+1}$ obtenemos que queda primero el elemento $a_{k}$, ubicandonos en el algorimo en el momento en que se analiza el elemneto correspondiente a la posici\'on donde se encuentra el elemento $a_{k}$, es hora de decidir el elemento correspondiente y este debe seleccionar el m\'inimo de todos los elementos que aun no se han insertado, pero como
+$a_{k} > a_{k+1}$ y $a_{k+1}$ no se ha insertado entonces en dicho momento $a_{k}$ no ser\'a el elemento m\'inimo.\\
+
+\textbf{4.Demuestre que el principio de inducción y el principio de buen ordenamiento son equivalentes.}
+$PIM \Rightarrow PBO$\\
+En un conjunto de enteros positivos diferente del vac\'io, con un elemento el \'inimo existe y es precisamente ese elemento.\\
+Supongamos que en todo conjunto de enteros no negativos, de cardinalidad n tiene elemento m\'inimo.\\
+Sea un conjunto arbitrario de cardinalidad n+1, tomamos un elemento al azar,. ahora se tiene un conjunto de cardinalidad n y este tiene elemento m\'inimo, lo comparamos con el que se tom\'o y nos quedamos con el menor, luego tambie\'en en n+1 existe el m\'inimo.\\
+$PBO \Rightarrow PIM$\\
+Sea $A \noq vacio$, el conjunto de todos los elementos que no cumplen determinada propiedad, y adem\'as se sabe que se cumple $P(1)$ y $P(n)\Rightarrow P(n+1)$, $\forall n>=1$
+Existe el m\'inimo por POB, sea m,luego:\\
+$m>=1$\\
+$m>2$\\
+$m-1>1$
+$\Rightarrow P(m-1)$\\
+Por tanto como $P(n)\Rightarrow P(n+1)$ se tiene $P(m)$, Contradicci\'on
+ 
+\end{document}
