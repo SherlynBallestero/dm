@@ -1,0 +1,50 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows}
+
+\title{Notas de conferencias}
+\author{Sherlyn Ballestero Cruz \\ Maria de Lourdes Choy Ferna\'ndez}
+
+\begin{document}
+\maketitle
+\newpage
+\pagestyle{myheadings}
+\markright{Introdicci\'on a la Teor\'ia de lenguajes y Aut\'omatas}
+\textit{Conferencia4}\\
+ Hasta ahora hemos visto que son lenguajes regulares aquellos que son aceptados por alg\'un DFA,que los DFA son equivalente a los NFA, asi como a partir de las relaciones entre conjunto aplicado a lenguajes regulares se obtienen lenguajes regulares.\\
+ Es decir,dado que tenemos un Lenguaje si encontramos un DFA o un NFA entonces sabemos que es regular, pero... ¿C\'omo decimos que un lenguaje no puede ser representado por alg\'un aut\'omata?...\\
+\section{Lema del Bombeo}
+\textbf{Lema del Bombeo:}
+Sea L un lenguaje regular, existe un n (que depende de L), tal que,
+$\forall$ w con  $\vert w \vert \geqslant n$, ω se puede escribir como
+xyz, tal que:\\
+1. y \neq \varepsilon\\
+2. $\vert xy \vert\leqslant n$\\
+3. $\forall k, xy^{k}z \in L$\\
+\textbf{eh????}\\
+Esto quiere decir que se puede encontrar la cadena  
+$y \neq \varepsilon$, no muy lejana del inicio de w, que puede ser bombeada, o sea la podemos eliminar o repetir tantas veces como querramos y la cadena resultante $w'$ va a pertenecer al lenguaje.\\
+\textbf{Demostraci\'on}\\
+Supongamos que L es regular.\\
+Se tiene que L=L(A) para alg\'un DFA A.\\
+Supongamos que A tiene n estados.\\
+Sea w,  $\vert w \vert \geqslant n$.\\
+Luego $w=a_{1}a_{2}...a_{m}$, donde $m\geqslant n$ y $ \forall$ $a_{i}, a_{i}\in V$, o sea es un simbolo de entrada cada $a_{i}$.
+Para i=1...n, se definen los estados $p_{i}$ de $\widehat{\delta}(q_{0},a_{1}a_{2}...a{i})$, donde \delta es la funci\'on de transicci\'on de A y $q_{0}$ el estado inicial.\\
+Luego A est\'a en el estado $p_{i}$ despu\'es de leer los primerosa i s\'imbolos de w.\\
+Notese que $q_{0}=p_{0}$.\\
+Por principio del palomar no es posible tener n+1 $p_{i}$,pues  los $p_{i}$ para i=1...n, son distintos porque solo hay n diferentes estados.  Luego se pueden encontrar dos enteros i,j tal que $0\leqslant i\leqslant j \leqslant n$ tal que $p_{i}=p_{j}$.\\
+1.$x=a_{1}...a_{i}$\\
+2. $y=a_{i+1}...a_{j}$
+3.$z=a_{j+1}...a_{m}$.\\
+Lo que sucede es que x nos lleva hasta $p_{i}$, luego con y se pasa por una serie de estados y se llega nuevamente a $p_{i}$ y con z se termina w.\\
+Si x es la cadena vacia, se parte del estado inicial y cuando se recorre y se vuelve a caer en el estado inicial, si z es vac\'io ser\'ia j=n=m.\\ 
+
+
+
+\end{document}
