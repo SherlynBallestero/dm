@@ -17,8 +17,19 @@
 \markright{Introdicci\'on a la Teor\'ia de lenguajes y Aut\'omatas}
 \textit{Conferencia5}\\
  
-\section{Lema del Bombeo}
-
+\section{M\'aquina de Turing}
+Una máquina de Turing es un modelo teórico de una computadora que  consta de un control finito que puede estar en cualquiera de un conjunto finito de estados. Hay una cinta dividida en cuadrados o celdas, cada celda puede contener cualquiera de un número finito de símbolos. Inicialmente, se coloca en la cinta la entrada, que es una cadena de longitud finita de símbolos elegidos del alfabeto de entrada. Todas las demás celdas de la cinta que se extienden infinitamente a la izquierda y a la derecha contienen inicialmente un símbolo especial llamado "blanco". El blanco es un símbolo de cinta pero no un símbolo de entrada y también puede haber otros símbolos de cinta además de los símbolos de entrada y el blanco.Hay una cabeza de cinta que siempre se posiciona en una de las celdas de la cinta. Se dice que la máquina de Turing está escaneando esa celda. Inicialmente, la cabeza de la cinta está en la celda más a la izquierda que contiene la entrada.\\
+Un movimiento de la máquina de Turing es una función del estado del control finito y el símbolo de cinta escaneado. En un movimiento, la máquina de Turing cambiará de estado. El siguiente estado opcionalmente puede ser el mismo que el estado actual. También escribirá un símbolo de cinta en la celda escaneada. Este símbolo de cinta reemplaza cualquier símbolo que haya en esa celda. Opcionalmente, el símbolo escrito puede ser el mismo que el símbolo que está actualmente allí.
+ 
+\section{Formalizando...}
+Describimos una TM mediante la tupla$ M = (Q, \Sigma, \Gamma, \delta, q0, B, F)$, cuyos componentes tienen los siguientes significados:\\
+- Q: el conjunto finito de estados del control finito.\\
+- $\Sigma$ el conjunto finito de símbolos de entrada.\\
+- $\Gamma$ el conjunto completo de símbolos de cinta, que siempre es un subconjunto de $\Sigma$.\\
+- $\delta:$ la función de transición. Los argumentos de $\delta(q, X)$ son un estado q y un símbolo X de la cinta. El valor de $\delta(q, X)$, si está definido, es una tripleta (p, Y, D), donde p es el próximo estado en Q, Y es el símbolo en $\Gamma$ escrito en la celda que se está escaneando, reemplazando cualquier símbolo que hubiera allí, y D es una dirección, I,P, o D , indicando la dirección en la que se mueve la cabeza.\\
+- q0: el estado inicial, un miembro de Q en el que se encuentra el control finito inicialmente.\\
+- B: el símbolo en blanco. Este símbolo está en $\Gamma$ pero no en $\Sigma$, es decir, no es un símbolo de entrada. El blanco aparece inicialmente en todas las celdas excepto en el número finito de celdas iniciales que contienen símbolos de entrada.\\
+- F: el conjunto de estados finales o aceptadores, un subconjunto de Q.\\
 
 
 
